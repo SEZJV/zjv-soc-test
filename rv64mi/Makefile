@@ -3,13 +3,14 @@ rv64mi_test_target = \
 	$(rv64mi_z_type) \
 
 rv64mi_exception = \
+	access  \
 	sbreak  \
 	scall   \
     illegal \
 	ma_addr     \
 	ma_fetch    \
-	#breakpoint  \
-	#access  \
+	# breakpoint  \
+	
 
 rv64mi_z_type = \
 	csr   \

@@ -194,8 +194,8 @@ reset_vector:                                                           \
 #define RVTEST_PASS                                                     \
         fence;                                                          \
         li TESTNUM, 1;                                                  \
-	    lui	  t0, %hi(0xc001babe);                                      \
-	    addi  t0, t0, %lo(0xc001babe);                                  \
+	      lui	  t0, %hi(0xc001babe);                                      \
+	      addi  t0, t0, %lo(0xc001babe);                                  \
         sd    t0, 0x100(zero);
 //        ebreak
         
@@ -206,8 +206,8 @@ reset_vector:                                                           \
 1:      beqz TESTNUM, 1b;                                               \
         sll TESTNUM, TESTNUM, 1;                                        \
         or TESTNUM, TESTNUM, 1;                                         \
-	    lui	  t0, %hi(0xdeadbabe);                                      \
-	    addi  t0, t0, %lo(0xdeadbabe);                                \
+	      lui	  t0, %hi(0xdeadbabe);                                      \
+	      addi  t0, t0, %lo(0xdeadbabe);                                \
         sd    t0, 0x100(zero);
 //        ecall
 

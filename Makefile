@@ -3,8 +3,10 @@ DEST_DIR    ?= $(CURDIR)/build
 
 ## XXX_test_src XXX_test_target
 include $(CURDIR)/rv64ui/Makefile
-include $(CURDIR)/uart/Makefile
+include $(CURDIR)/rv64ua/Makefile
+include $(CURDIR)/rv64um/Makefile
 include $(CURDIR)/rv64mi/Makefile
+include $(CURDIR)/uart/Makefile
 
 RISCV_PREFIX   := riscv64-unknown-elf
 LINK_SCRIPT    := -T$(CURDIR)/common/zjv.ld 
@@ -31,8 +33,10 @@ endef
 $(DEST_DIR):
 	mkdir -p $(DEST_DIR)
 
-# $(eval $(call compile_template,rv64ui))
+$(eval $(call compile_template,rv64ui))
+$(eval $(call compile_template,rv64ua))
+$(eval $(call compile_template,rv64um))
 $(eval $(call compile_template,rv64mi))
-# $(eval $(call compile_template,uart))
+$(eval $(call compile_template,uart))
 
 all: $(DEST_DIR) $(tests)

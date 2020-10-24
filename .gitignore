@@ -1,4 +1,4 @@
 build/
+uart-int
 *.o
-vmlinux
 log

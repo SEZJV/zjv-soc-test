@@ -23,7 +23,7 @@ obj                = $(patsubst %.S,%.o,$(asm_src)) $(patsubst %.c,%.o,$(arc_src
 
 
 all: $(obj)
-	${LD} -T vmlinux.lds $(obj)  -o vmlinux
+	${LD} -T uart-int.lds $(obj)  -o uart-int
 
 
 

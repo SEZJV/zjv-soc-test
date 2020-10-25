@@ -2,6 +2,7 @@ SRC_DIR     := $(CURDIR)
 DEST_DIR    ?= $(CURDIR)/build
 
 ## XXX_test_src XXX_test_target
+include $(CURDIR)/rv64si/Makefile
 include $(CURDIR)/rv64ui/Makefile
 include $(CURDIR)/rv64ua/Makefile
 include $(CURDIR)/rv64um/Makefile
@@ -33,6 +34,7 @@ endef
 $(DEST_DIR):
 	mkdir -p $(DEST_DIR)
 
+$(eval $(call compile_template,rv64si))
 $(eval $(call compile_template,rv64ui))
 $(eval $(call compile_template,rv64ua))
 $(eval $(call compile_template,rv64um))

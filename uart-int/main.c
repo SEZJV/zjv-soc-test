@@ -2,7 +2,7 @@
 
 #define PLIC_PRIO_BASE    0x0C000000
 #define PLIC_IE_BASE      0x0C002000
-#define PLIC_UART_IRQ 10
+#define PLIC_UART_IRQ     1
 
 
 int start_kernel() {

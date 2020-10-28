@@ -12,17 +12,17 @@
 .align 3
 
 _start:
+	la t0, trap_m
+	csrw mtvec, t0
 	li t0, MIP_MEIP
 	csrs mie, t0
 	li t0, MSTATUS_MIE
 	csrs mstatus, t0
-	la t0, trap_m
-	csrw mtvec, t0
+
 
 	la sp, stack_top
 	# To jump to start_kernel
 	call start_kernel
-
 
 
 .align 3

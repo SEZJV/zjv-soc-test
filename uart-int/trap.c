@@ -2,7 +2,7 @@
 #include "encoding.h"
 
 #define PLIC_CONTEXT_BASE    0x0C200000
-#define PLIC_UART_IRQ 10
+#define PLIC_UART_IRQ 1
 
 typedef unsigned int uint32_t;
 typedef unsigned long int reg_t;
@@ -29,5 +29,5 @@ void trap_handler(reg_t cause, reg_t epc) {
 	}
 	else {
 		printf("Exception\n");
-        }
+    }
 }

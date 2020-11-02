@@ -2,7 +2,7 @@
 #include "encoding.h"
 
 #define PLIC_CONTEXT_BASE    0x0C200000
-#define PLIC_UART_IRQ 10
+#define PLIC_UART_IRQ 		 1
 
 typedef unsigned int uint32_t;
 typedef unsigned long int reg_t;
@@ -16,8 +16,13 @@ void trap_handler(reg_t cause, reg_t epc) {
 			  printf("External Interrupt\n");
 			  uint32_t* irq = (uint32_t *)(PLIC_CONTEXT_BASE+4);
 			  if (*irq == PLIC_UART_IRQ) {
-				char c = getchar();
-				printf("[%c]\n", c);
+				  for (;;) {
+					char c = getchar();
+					if (c)
+						printf("[%c]\n", c);
+					else 
+						break;
+				  }
 				*irq = PLIC_UART_IRQ;
 			  }
 			  else 

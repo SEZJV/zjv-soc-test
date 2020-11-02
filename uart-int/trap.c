@@ -34,5 +34,5 @@ void trap_handler(reg_t cause, reg_t epc) {
 	}
 	else {
 		printf("Exception\n");
-        }
+    }
 }

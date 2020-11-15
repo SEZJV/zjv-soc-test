@@ -201,8 +201,9 @@ reset_vector:                                                           \
         addi t0, zero, 'S';                                              \
 	      sb   t0, 0(s0);                                                  \
         addi t0, zero, 'S';                                              \
-	      sb   t0, 0(s0);            
-
+	      sb   t0, 0(s0);                                                  \
+    1:  j 1b;
+    
 #define TESTNUM gp
 #define RVTEST_FAIL                                                     \
         fence;                                                          \
@@ -214,7 +215,8 @@ reset_vector:                                                           \
         addi t0, zero, 'I';                                              \
 	      sb   t0, 0(s0);                                                  \
         addi t0, zero, 'L';                                              \
-	      sb   t0, 0(s0);    
+	      sb   t0, 0(s0);                                                  \
+    1:  j 1b;
 
 //-----------------------------------------------------------------------
 // Data Section Macro

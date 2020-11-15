@@ -126,11 +126,11 @@ trap_vector:                                                            \
         /* test whether the test came from pass/fail */                 \
         csrr t5, mcause;                                                \
         li t6, CAUSE_USER_ECALL;                                        \
-        beq t5, t6, write_tohost;                                       \
+        beq t5, t6, success;                                       \
         li t6, CAUSE_SUPERVISOR_ECALL;                                  \
-        beq t5, t6, write_tohost;                                       \
+        beq t5, t6, success;                                       \
         li t6, CAUSE_MACHINE_ECALL;                                     \
-        beq t5, t6, write_tohost;                                       \
+        beq t5, t6, success;                                       \
         /* if an mtvec_handler is defined, jump to it */                \
         la t5, mtvec_handler;                                           \
         beqz t5, 1f;                                                    \
@@ -144,10 +144,18 @@ handle_exception:                                                       \
   other_exception:                                                      \
         /* some unhandlable exception occurred */                       \
   1:    ori TESTNUM, TESTNUM, 1337;                                     \
-  write_tohost:                                                         \
-  	    lui	  t0, %hi(0xc001babe);                                      \
-  	    addi  t0, t0, %lo(0xc001babe);                                  \
-        sd    t0, 0x100(zero);                                          \
+  success:                                                         \
+        fence;                                                          \
+        li  s0, UART_BASE;                                               \
+        addi t0, zero, 'P';                                              \
+	      sb   t0, 0(s0);                                                  \
+        addi t0, zero, 'A';                                              \
+	      sb   t0, 0(s0);                                                  \
+        addi t0, zero, 'S';                                              \
+	      sb   t0, 0(s0);                                                  \
+        addi t0, zero, 'S';                                              \
+	      sb   t0, 0(s0);                                                  \
+    3:  j 3b;                                                           \
 reset_vector:                                                           \
         RISCV_MULTICORE_DISABLE;                                        \
         INIT_SATP;                                                      \

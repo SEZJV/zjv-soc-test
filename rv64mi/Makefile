@@ -4,8 +4,8 @@ rv64mi_test_target = \
 
 rv64mi_exception = \
 	access  \
-	sbreak  \
-	scall   \
+	mbreak  \
+	mcall   \
     illegal \
 	ma_addr     \
 	ma_fetch    \

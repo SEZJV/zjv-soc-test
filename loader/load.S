@@ -3,6 +3,28 @@
 	.globl _start
 	.align 4
 _start:
+	lui	a5,0x41000
+	li	a4,-125
+	sb	a4,15(a5)
+	li	a4,27
+	sb	a4,0(a5)
+	sb	zero,5(a5)
+	li	a4,3
+	sb	a4,15(a5)
+
+    addi t0, zero, 'S';   
+	sb   t0, 0(a5);  
+    addi t0, zero, 'T';   
+	sb   t0, 0(a5);  
+    addi t0, zero, 'A';   
+	sb   t0, 0(a5);  
+    addi t0, zero, 'R';   
+	sb   t0, 0(a5);  
+    addi t0, zero, 'T';   
+	sb   t0, 0(a5);  
+    addi t0, zero, '\n';   
+	sb   t0, 0(a5);  
+
 	li a0, DRAM_BASE
 	la a1, _image_start
 	la a2, _image_end

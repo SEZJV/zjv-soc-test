@@ -7,7 +7,7 @@ MEMORY {
 }
 
 SECTIONS {
-  . = ORIGIN(flash);
+  . = ORIGIN(ram);
   _start = .;
 
   . = ALIGN(0x1000);

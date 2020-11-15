@@ -3,10 +3,10 @@
 #-----------------------------------------------------------------------
 
 rv64si_test_target = \
-	csr \
+	scsr \
 	dirty \
 	icache-alias \
-	ma_fetch \
+	sa_fetch \
 	scall \
 	wfi \
 	sbreak \

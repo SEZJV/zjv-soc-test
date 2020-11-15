@@ -7,13 +7,14 @@
 # Test add instruction.
 #
 
+#include "encoding.h"
 #include "riscv_test.h"
 #include "test_macros.h"
 
 RVTEST_RV64U
 RVTEST_BARE_CODE_BEGIN
 
-	lui  s0, 0x10000
+	li  s0, UART_BASE
 
 
 1:    	lb   t1, 0(s0)

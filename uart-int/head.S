@@ -6,8 +6,8 @@
 .extern stack_top
 .extern start_kernel
 .local trap_m
-.equ mtimecmp, 0x2004000
-.equ mtime, 0x200bff8
+.equ mtimecmp, CLINT_BASE + 0x4000
+.equ mtime, CLINT_BASE + 0xbff8
 .equ reg_size, 0x8
 .align 3
 

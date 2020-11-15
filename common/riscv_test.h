@@ -193,23 +193,28 @@ reset_vector:                                                           \
 
 #define RVTEST_PASS                                                     \
         fence;                                                          \
-        li TESTNUM, 1;                                                  \
-	      lui	  t0, %hi(0xc001babe);                                      \
-	      addi  t0, t0, %lo(0xc001babe);                                  \
-        sd    t0, 0x100(zero);
-//        ebreak
-        
+        li  s0, UART_BASE;                                               \
+        addi t0, zero, 'P';                                              \
+	      sb   t0, 0(s0);                                                  \
+        addi t0, zero, 'A';                                              \
+	      sb   t0, 0(s0);                                                  \
+        addi t0, zero, 'S';                                              \
+	      sb   t0, 0(s0);                                                  \
+        addi t0, zero, 'S';                                              \
+	      sb   t0, 0(s0);            
 
 #define TESTNUM gp
 #define RVTEST_FAIL                                                     \
         fence;                                                          \
-1:      beqz TESTNUM, 1b;                                               \
-        sll TESTNUM, TESTNUM, 1;                                        \
-        or TESTNUM, TESTNUM, 1;                                         \
-	      lui	  t0, %hi(0xdeadbabe);                                      \
-	      addi  t0, t0, %lo(0xdeadbabe);                                \
-        sd    t0, 0x100(zero);
-//        ecall
+        li  s0, UART_BASE;                                               \
+        addi t0, zero, 'F';                                              \
+	      sb   t0, 0(s0);                                                  \
+        addi t0, zero, 'A';                                              \
+	      sb   t0, 0(s0);                                                  \
+        addi t0, zero, 'I';                                              \
+	      sb   t0, 0(s0);                                                  \
+        addi t0, zero, 'L';                                              \
+	      sb   t0, 0(s0);    
 
 //-----------------------------------------------------------------------
 // Data Section Macro

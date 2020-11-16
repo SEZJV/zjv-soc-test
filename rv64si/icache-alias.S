@@ -21,7 +21,7 @@ RVTEST_CODE_BEGIN
   # Set up intermediate page tables
 
   la t0, page_table_3
-  srl t0, t0, RISCV_PGSHIFT - PTE_PPN_SHIFT
+  srl t0, t0, RISCV_PGSHIFT - PTE_PPN_SHIFT # 12 - 10
   ori t0, t0, PTE_V
   sd t0, page_table_2, t1
 
@@ -48,7 +48,7 @@ RVTEST_CODE_BEGIN
   la a1, page_table_1
   srl a1, a1, RISCV_PGSHIFT
   or a1, a1, a0
-  csrw sptbr, a1
+  csrw satp, a1
   sfence.vma
 
   # Enter supervisor mode and make sure correct page is accessed

@@ -58,7 +58,7 @@ gotoRam:
 	.section .payload, "wa"
 	.globl _image_start
 	.globl _image_end
-	.align 12
+	.align 4
 _image_start:
 	.incbin IMG
 _image_end:

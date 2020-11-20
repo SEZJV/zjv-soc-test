@@ -38,7 +38,7 @@ $$($(1)_test_target): %: $$(SRC_DIR)/$(1)/%.S
 	od -v -An -tx8 $$(SIM_BIN_DIR)/$(1)_$$@ > $$(SIM_HEX_DIR)/$(1)_$$@
 	$$(MAKE) -C loader IMG=$$(SIM_ELF_DIR)/$(1)_$$@ CC=$$(RISCV_PREFIX)-gcc DEST_DIR=$$(SOC_ELF_DIR) INCLUDE_DIR=$$(INCLUDE_DIR)
 	$$(RISCV_PREFIX)-objcopy -O binary $$(SOC_ELF_DIR)/$(1)_$$@ $$(SOC_BIN_DIR)/$(1)_$$@
-	od -v -An -tx8 $$(SOC_BIN_DIR)/$(1)_$$@ > $$(SOC_HEX_DIR)/$(1)_$$@
+	od -v -An -tx1 $$(SOC_BIN_DIR)/$(1)_$$@ > $$(SOC_HEX_DIR)/$(1)_$$@
 
 .PHONY: $(1)
 tests += $$($(1)_test_target)
@@ -58,7 +58,7 @@ $(eval $(call compile_template,uart))
 all: $(TARGET_DIR) $(tests)
 	$(MAKE) -C loader  CC=$(RISCV_PREFIX)-gcc DEST_DIR=$(SOC_ELF_DIR) INCLUDE_DIR=$(INCLUDE_DIR) TARGET=$(SOC_ELF_DIR)/empty
 	$(RISCV_PREFIX)-objcopy -O binary $(SOC_ELF_DIR)/empty $(SOC_BIN_DIR)/empty
-	od -v -An -tx8 $(SOC_BIN_DIR)/empty > $(SOC_HEX_DIR)/empty
+	od -v -An -tx1 $(SOC_BIN_DIR)/empty > $(SOC_HEX_DIR)/empty
 
 clean:
 	rm -rf build

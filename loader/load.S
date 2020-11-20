@@ -38,13 +38,13 @@ cpFlash2Ram:
 
 gotoRam:
 	li  s0, UART_BASE;
-    addi t0, zero, 'C';   
+    addi t0, zero, 'J';   
+	sb   t0, 0(s0);     
+    addi t0, zero, 'U';   
+	sb   t0, 0(s0);     
+    addi t0, zero, 'M';   
 	sb   t0, 0(s0);     
     addi t0, zero, 'P';   
-	sb   t0, 0(s0);     
-    addi t0, zero, 'O';   
-	sb   t0, 0(s0);     
-    addi t0, zero, 'K';   
 	sb   t0, 0(s0);
     addi t0, zero, '\n';   
 	sb   t0, 0(s0);
@@ -52,13 +52,12 @@ gotoRam:
 	li t0, DRAM_BASE
 	jr t0
 
-
-
-
 	.section .payload, "wa"
 	.globl _image_start
 	.globl _image_end
 	.align 4
 _image_start:
+#ifdef IMG
 	.incbin IMG
+#endif
 _image_end:

@@ -8,7 +8,7 @@ ISA=rv64imafd
 ABI=lp64
 
 INCLUDE = -I ../common -I ../libmin
-CF =  -O3 -march=$(ISA) -mabi=$(ABI) -mcmodel=medany -ffunction-sections -fdata-sections -nostartfiles -nostdlib -nostdinc -static -lgcc -Wl,--nmagic -Wl,--gc-sections -g 
+CF =  -O3 -march=$(ISA) -mabi=$(ABI) -std=gnu99 -mcmodel=medany -ffunction-sections -fdata-sections -nostartfiles -nostdlib -nostdinc -static -lgcc -Wl,--nmagic -Wl,--gc-sections -g 
 CFLAG = ${CF} ${INCLUDE}
 
 arc_src            = $(sort $(wildcard ./*.c)) $(sort $(wildcard ../libmin/*.c))	

@@ -203,27 +203,35 @@ reset_vector:                                                           \
         fence;                                                          \
         li  s0, UART_BASE;                                               \
         addi t0, zero, 'P';                                              \
-	      sb   t0, 0(s0);                                                  \
+	      sw   t0, 4(s0);                                                  \
         addi t0, zero, 'A';                                              \
-	      sb   t0, 0(s0);                                                  \
+	      sw   t0, 4(s0);                                                  \
         addi t0, zero, 'S';                                              \
-	      sb   t0, 0(s0);                                                  \
+	      sw   t0, 4(s0);                                                  \
         addi t0, zero, 'S';                                              \
-	      sb   t0, 0(s0);                                                  \
+	      sw   t0, 4(s0);                                                  \
+        addi t0, zero, '\r';                                             \
+	      sw   t0, 4(s0);                                                  \
+        addi t0, zero, '\n';                                             \
+	      sw   t0, 4(s0);                                                  \
     3:  j 3b;
     
 #define TESTNUM gp
-#define RVTEST_FAIL                                                     \
-        fence;                                                          \
+#define RVTEST_FAIL                                                      \
+        fence;                                                           \
         li  s0, UART_BASE;                                               \
         addi t0, zero, 'F';                                              \
-	      sb   t0, 0(s0);                                                  \
+	      sw   t0, 4(s0);                                                  \
         addi t0, zero, 'A';                                              \
-	      sb   t0, 0(s0);                                                  \
+	      sw   t0, 4(s0);                                                  \
         addi t0, zero, 'I';                                              \
-	      sb   t0, 0(s0);                                                  \
+	      sw   t0, 4(s0);                                                  \
         addi t0, zero, 'L';                                              \
-	      sb   t0, 0(s0);                                                  \
+	      sw   t0, 4(s0);                                                  \
+        addi t0, zero, '\r';                                             \
+	      sw   t0, 4(s0);                                                  \
+        addi t0, zero, '\n';                                             \
+	      sw   t0, 4(s0);                                                  \
     3:  j 3b;
 
 //-----------------------------------------------------------------------

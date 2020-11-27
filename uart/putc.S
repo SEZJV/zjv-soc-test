@@ -17,31 +17,31 @@ RVTEST_BARE_CODE_BEGIN
 	li  s0, UART_BASE
 
 	addi t0, zero, 'H'
-	sb   t0, 0(s0)
+	sw   t0, 4(s0)
 	addi t0, zero, 'e'
-	sb   t0, 0(s0)
+	sw   t0, 4(s0)
 	addi t0, zero, 'l'
-	sb   t0, 0(s0)
+	sw   t0, 4(s0)
 	addi t0, zero, 'l'
-	sb   t0, 0(s0)
+	sw   t0, 4(s0)
 	addi t0, zero, 'o'
-	sb   t0, 0(s0)
+	sw   t0, 4(s0)
 	addi t0, zero, ','
-	sb   t0, 0(s0)
+	sw   t0, 4(s0)
 	addi t0, zero, ' '
-	sb   t0, 0(s0)
-	addi t0, zero, 'W'
-	sb   t0, 0(s0)
-	addi t0, zero, 'o'
-	sb   t0, 0(s0)
-	addi t0, zero, 'r'
-	sb   t0, 0(s0)
-	addi t0, zero, 'l'
-	sb   t0, 0(s0)	
-	addi t0, zero, 'd'
-	sb   t0, 0(s0)
+	sw   t0, 4(s0)
+	addi t0, zero, 'Z'
+	sw   t0, 4(s0)
+	addi t0, zero, 'J'
+	sw   t0, 4(s0)
+	addi t0, zero, 'V'
+	sw   t0, 4(s0)
 	addi t0, zero, '!'
-	sb   t0, 0(s0)
+	sw   t0, 4(s0)	
+	addi t0, zero, '\r'
+	sw   t0, 4(s0)
+	addi t0, zero, '\n'
+	sw   t0, 4(s0)
 
 RVTEST_CODE_END
 

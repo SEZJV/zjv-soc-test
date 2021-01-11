@@ -6,6 +6,7 @@ include $(CURDIR)/rv64si/Makefile
 include $(CURDIR)/rv64ui/Makefile
 include $(CURDIR)/rv64ua/Makefile
 include $(CURDIR)/rv64um/Makefile
+include $(CURDIR)/rv64uc/Makefile
 include $(CURDIR)/rv64mi/Makefile
 include $(CURDIR)/uart/Makefile
 
@@ -38,6 +39,7 @@ $(eval $(call compile_template,rv64si))
 $(eval $(call compile_template,rv64ui))
 $(eval $(call compile_template,rv64ua))
 $(eval $(call compile_template,rv64um))
+$(eval $(call compile_template,rv64uc))
 $(eval $(call compile_template,rv64mi))
 $(eval $(call compile_template,uart))
 

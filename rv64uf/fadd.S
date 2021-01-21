@@ -10,8 +10,8 @@
 #include "riscv_test.h"
 #include "test_macros.h"
 
-RVTEST_RV64UF
 RVTEST_BARE_CODE_BEGIN
+RVTEST_FP_ENABLE
 
   #-------------------------------------------------------------
   # Arithmetic tests

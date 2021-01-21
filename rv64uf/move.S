@@ -11,8 +11,8 @@
 #include "riscv_test.h"
 #include "test_macros.h"
 
-RVTEST_RV64UF
 RVTEST_BARE_CODE_BEGIN
+RVTEST_RV64UF
 
   TEST_CASE(2, a1, 1, csrwi fcsr, 1; li a0, 0x1234; fssr a1, a0)
   TEST_CASE(3, a0, 0x34, frsr a0)

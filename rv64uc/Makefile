@@ -3,6 +3,7 @@
 #-----------------------------------------------------------------------
 
 rv64uc_test_target = \
-	rvc \
+	cross-page \
+	rvc
 
 rv64uc_test_src = $(addsuffix .S, $(rv64uc_sc_tests))
